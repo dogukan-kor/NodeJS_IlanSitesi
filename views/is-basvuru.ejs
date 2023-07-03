@@ -1,0 +1,53 @@
+<%- include('./includes/head.ejs') %>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <%- include('./includes/navigation.ejs') %>
+    <br> <br> <br>
+    <div class="container">
+        <h6>İş fırsatları > <%= ilan.pozisyon %>  > Başvuru Formu </h6> <br>
+        <div> <h4></h4> </div>
+        <div class="container">
+            <form action="/basvuruYolla" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                </div>
+                <div class="form-group">
+                  <label for="exampleFormControlInput1">Ad Soyad</label>
+                  <input type="text" class="form-control"  name="adsoyad" placeholder="Ad Soyad.." required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">E-Posta</label>
+                    <input type="email" class="form-control"  name="eposta" placeholder="name@example.com" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleFormControlInput1">Telefon Numarası</label>
+                    <input type="number" class="form-control"  name="telefon" placeholder="05********" required>
+                  </div>  
+                  <div class="form-group">
+                    <label for="exampleFormControlFile1">Resim</label>
+                    <input type="file" class="form-control-file"  name="kullanici_foto" id="kullanici_foto" required>
+                  </div>
+                  <hr>
+                  <div class="form-group">
+                    <label for="exampleFormControlFile1">Cv</label>
+                    <input type="file" class="form-control-file"  name="cv" required>
+                  </div>
+                  <hr>
+                <div class="form-group">
+                  <label for="exampleFormControlTextarea1">Ön Yazı</label>
+                  <textarea class="form-control"  name="onyazi" rows="2" required></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="exampleFormControlTextarea1">Maaş Beklentisi</label>
+                  <input type="number" class="form-control" name="maas" placeholder="" required>
+                </div>
+                <input type="hidden" name="ilan_id" value="<%= ilan.id %>">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <button type="submit" class="btn bg-dark text-white">Başvuru Yap</button>
+              </form>
+        </div>
+        <br>
+    </div>
+    
+</body>
+</html>

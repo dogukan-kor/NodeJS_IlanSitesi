@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>
+        <%= pageTitle %>
+    </title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="../../assets/images/favicon.png" />
+</head>
+
+<body>
+    <div class="container-scroller">
+
+        <%- include('../includes/admin-navigation.ejs') %>
+
+            <div class="container-fluid page-body-wrapper">
+                <div class="main-panel">
+                    <div class="content-wrapper">
+                        <div class="row">
+
+                            <div class="col-lg-8 grid-margin stretch-card">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Başvuran Kişi Bilgileri</h4>
+                                        <div class="table-responsive">
+
+                                            <table class="table table-dark ">
+
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="py-1" style="text-align:center ;"> KİŞİSEL BİLGİLER
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="py-4 text-center">
+                                                            <img style="width: 45%; height: 40%;"
+                                                                src="<%=  basvuran.resim %>" />
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td> Ad Soyad: <b>
+                                                                <%= basvuran.ad_soyad %>
+                                                            </b>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Telefon: <b>
+                                                                <%= basvuran.telefon %>
+                                                            </b>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>E Posta: <b>
+                                                                <%= basvuran.email %>
+                                                            </b>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td> Ön Yazı: <b>
+                                                                <%= basvuran.on_yazi %>
+                                                            </b>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> Maaş Beklentisi: <b>
+                                                                <%= basvuran.maas_beklenti %> TL
+                                                            </b>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> CV : <a href="<%=  basvuran.cv %>" target="_blank"><img
+                                                                    src="images/cv.png" alt=""></a> </td>
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 grid-margin stretch-card">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Başvurduğu İş</h4>
+                                        <div class="table-responsive">
+
+                                            <table class="table table-dark ">
+
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="py-1" style="text-align:center ;"> İŞ BİLGİLERİ </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>
+                                                            İş Adı: <%= ilan.is_adi %>
+                                                        </td>
+                                                    </tr>
+
+
+                                                    <tr>
+                                                        <td> Pozisyon: <%= ilan.pozisyon %>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>İl: <%= ilan.il %>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>
+                                                            İlçe: <%= ilan.is_adi %>
+                                                        </td>
+                                                    </tr>
+
+
+                                                    <form action="/basvuruCevapla" method="POST">
+                                                        <tr>
+                                                            <td>
+                                                                <input type="hidden" name="_csrf"
+                                                                    value="<%= csrfToken %>">
+                                                                <input type="hidden" name="basvuran_id"
+                                                                    value="<%= basvuran.id %>">
+                                                                <button type="submit" name="islem"
+                                                                    class="btn btn-success mr-2" value="onayla">Başvuru
+                                                                    Onayla</button>
+                                                               
+                                                            </td>
+                                                        </tr>
+                                                        
+                                                    </form>
+                                                    <tr>
+                                                        <td>
+                                                            <form action="/basvuruCevapla" method="POST">
+                                                                <input type="hidden" name="_csrf"
+                                                                    value="<%= csrfToken %>">
+                                                                <input type="hidden" name="basvuran_id"
+                                                                    value="<%= basvuran.id %>">
+                                                                <label for="">Reddetme Nedeni (Zorunlu!)</label>
+                                                                <input type="password" class="form-control"
+                                                                    name="sifre" value="" required>
+                                                                    <br>
+                                                                <button name="islem" type="submit"
+                                                                    class="btn btn-danger mr-2"
+                                                                    value="reddet">Reddet</button>
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <footer class="footer">
+                        <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright ©
+                                bootstrapdash.com 2020</span>
+                            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a
+                                    href="https://www.bootstrapdash.com/bootstrap-admin-template/"
+                                    target="_blank">Bootstrap admin templates</a> from Bootstrapdash.com</span>
+                        </div>
+                    </footer>
+                    <!-- partial -->
+                </div>
+                <!-- main-panel ends -->
+            </div>
+            <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="../../assets/js/off-canvas.js"></script>
+    <script src="../../assets/js/hoverable-collapse.js"></script>
+    <script src="../../assets/js/misc.js"></script>
+    <script src="../../assets/js/settings.js"></script>
+    <script src="../../assets/js/todolist.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <!-- End custom js for this page -->
+</body>
+
+</html>

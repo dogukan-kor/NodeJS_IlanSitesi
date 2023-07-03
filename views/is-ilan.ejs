@@ -1,0 +1,32 @@
+<%- include('./includes/head.ejs') %>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <%- include('./includes/navigation.ejs') %>
+    <br>
+    <div class="container">
+        <div> <h4>İş İlanları</h4> </div>
+        <% if (ilan.length > 0) { %>
+        
+        <table class="table table-bordered w-100 text-center">
+            <% for (let iln of ilan) { %>
+             <form action="/detay_Getir" method="POST">
+              <tr>
+              <td colspan="2"><%= iln.pozisyon %></td>
+              <td colspan="2"><%= iln.il %>, <%= iln.ilce %></td>
+              <td colspan="1">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <button class="btn bg-dark text-white" type="submit">İncele</button>
+                <input type="hidden" name="ilan_id" value="<%= iln.id %>"></td>
+            </tr>
+            </form>
+            <% } %>
+        </table>
+   
+        <% } else { %>
+            <h1>Hiç İlan Yok</h1>       
+            <% } %>
+    </div>
+    
+</body>
+</html>

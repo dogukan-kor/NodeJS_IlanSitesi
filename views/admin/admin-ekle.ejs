@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title><%= pageTitle %></title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="../../assets/vendors/select2/select2.min.css">
+    <link rel="stylesheet" href="../../assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="../../assets/images/favicon.png" />
+  </head>
+  <body>
+    
+    <div class="container-scroller">
+    
+      <%- include('../includes/admin-navigation.ejs') %>
+      
+      <div class="container-fluid page-body-wrapper">
+        
+        <div class="main-panel">
+          <div class="user-message user-message-error"><%= errorsMessage %></div>
+          <% if (path=="/admin-duzenle") { %>
+          <div class="content-wrapper">
+            <div class="page-header">
+              <h3 class="page-title">Güncelleme İşlemi </h3>
+            
+            </div>
+            <div class="row justify-content-around">
+                <div class="col-md-10 grid-margin stretch-card">
+                    <div class="card">
+                      <div class="card-body">
+                        <h4 class="card-title">Admin Düzenle</h4>
+                        <p class="card-description"> </p>
+                        <form class="forms-sample" action="/admin-guncelle" method="POST">
+                          <div class="form-group">
+                            <label for="exampleInputUsername1">Adı</label>
+                            <input type="text" class="form-control" name="ad" value=" <%= admin.name %>">
+                          </div>  
+                          <div class="form-group">
+                            <label for="exampleInputUsername1">Soyad</label>
+                            <input type="text" class="form-control" name="soyad" value=" <%= admin.surname %>">
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleInputEmail1">E-Posta Adresi</label>
+                            <input type="email" class="form-control" name="eposta" value=" <%= admin.email %>">
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleInputPassword1">Şifre</label>
+                            <input type="password" class="form-control" name="sifre" value=" <%= admin.password %>">
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleInputConfirmPassword1">Şifre Tekrar</label>
+                            <input type="password" class="form-control" name="sifre2" value=" <%= admin.password %>">
+                          </div>
+                          <div class="form-group">
+                            <label>Yetki Durumu</label>
+                              <select class="form-control">
+                                <option>Yetkisiz</option>
+                                <option>Yetkili</option>
+                              </select>
+                           
+                          </div> <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                          <button type="submit" class="btn btn-primary mr-2">Güncelle</button>
+                          </div>
+                         
+                        </form>
+                      </div>
+                    </div>
+           </div>
+        </div>
+        <% } else { %>
+
+        <!--sds sads sdds-->
+
+
+        <div class="content-wrapper">
+          <div class="page-header">
+            <h3 class="page-title">Ekleme İşlemi </h3>
+          
+          </div>
+          <div class="row justify-content-around">
+              <div class="col-md-10 grid-margin stretch-card">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title">Admin Ekle</h4>
+                      <p class="card-description"> </p>
+                      <form class="forms-sample" action="/admin_Ekle" method="POST" novalidate>
+                        <div class="form-group">
+                          <label for="exampleInputUsername1">Adı</label>
+                          <input type="text" class="form-control" name="ad" placeholder="Adınız.."  >
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputUsername1">Soyad</label>
+                          <input type="text" class="form-control" name="soyad" placeholder="Soyadınız..">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">E-Posta Adresi</label>
+                          <input type="email" class="form-control" name="eposta" placeholder="Email..">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputPassword1">Şifre</label>
+                          <input type="password" class="form-control" name="sifre" placeholder="Şifre..">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputConfirmPassword1">Şifre Tekrar</label>
+                          <input type="password" class="form-control" name="sifre2" placeholder="Şifre Tekrar..">
+                        </div>
+                        <div class="form-group">
+                          <label>Yetki Durumu</label>
+                            <select class="form-control" name="yetki">
+                              <option>Yetkili</option>
+                              <option>Yetkisiz</option>
+                            </select>
+                         
+                        </div> <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        <button type="submit" class="btn btn-primary mr-2">Ekle</button>
+                        </div>
+                       
+                      </form>
+                    </div>
+                  </div>
+         </div>
+      </div>
+      <% }   %>
+          <!-- content-wrapper ends -->
+          <!-- partial:../../partials/_footer.html -->
+          <footer class="footer">
+            
+          </footer>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="../../assets/vendors/select2/select2.min.js"></script>
+    <script src="../../assets/vendors/typeahead.js/typeahead.bundle.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="../../assets/js/off-canvas.js"></script>
+    <script src="../../assets/js/hoverable-collapse.js"></script>
+    <script src="../../assets/js/misc.js"></script>
+    <script src="../../assets/js/settings.js"></script>
+    <script src="../../assets/js/todolist.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="../../assets/js/file-upload.js"></script>
+    <script src="../../assets/js/typeahead.js"></script>
+    <script src="../../assets/js/select2.js"></script>
+    <!-- End custom js for this page -->
+  </body>
+</html>
+
+
